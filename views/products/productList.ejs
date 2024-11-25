@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh sách sản phẩm</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Trang chủ</a></li>
+        <li><a href="/productlist">Sản phẩm</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Danh sách sản phẩm</h1>
+    <div class="products">
+      <% if (products && products.length > 0) { %> <!-- Kiểm tra nếu có sản phẩm -->
+        <% products.forEach(product => { %>
+          <div class="product">
+            <img src="<%= product.image %>" alt="<%= product.name %>" width="200">
+            <h3><%= product.name %></h3>
+            <p>Giá: <%= product.price %> VND</p>
+            <a href="/products/<%= product.id %>">Xem chi tiết</a>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>Không có sản phẩm nào để hiển thị!</p>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>
